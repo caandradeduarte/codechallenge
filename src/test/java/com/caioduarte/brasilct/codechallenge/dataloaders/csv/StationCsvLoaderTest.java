@@ -17,15 +17,13 @@ import au.com.bytecode.opencsv.CSVReader;
 
 public class StationCsvLoaderTest {
 	
-	private static final String STATIONS_CSV = "stations.csv";
-	
 	private StationCsvLoader loader = new StationCsvLoader();
 	
 	CSVReader stationsCsvFile;
 	
 	@Before
 	public void readFile() {
-		stationsCsvFile = loader.readFile(STATIONS_CSV);
+		stationsCsvFile = loader.readFile(StationCsvLoader.STATIONS_CSV);
 	}
 		
 	@Test
@@ -46,7 +44,7 @@ public class StationCsvLoaderTest {
 	@Test
 	public void must_populate_a_list_of_stations() {
 		List<String[]> lines = loader.loadLines(stationsCsvFile);
-		List<Station> populatedStations = loader.populateStations(lines);
+		List<Station> populatedStations = loader.populate(lines);
 		assertFalse(CollectionUtils.isEmpty(populatedStations));
 		assertNotNull(populatedStations.get(0).getId());
 	}

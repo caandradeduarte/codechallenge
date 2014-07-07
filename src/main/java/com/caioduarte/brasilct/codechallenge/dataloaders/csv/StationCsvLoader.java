@@ -1,12 +1,11 @@
 package com.caioduarte.brasilct.codechallenge.dataloaders.csv;
 
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import au.com.bytecode.opencsv.CSVReader;
 
@@ -14,18 +13,22 @@ import com.caioduarte.brasilct.codechallenge.dataloaders.StationLoader;
 import com.caioduarte.brasilct.codechallenge.models.Station;
 
 @Repository
-public class StationCsvLoader implements StationLoader {
+public class StationCsvLoader extends CsvLoader<Station> implements StationLoader {
 
+	protected static final String STATIONS_CSV = "stations.csv";
+	
 	@Override
+	@Transactional
 	public List<Station> load() {
-		CSVReader reader = readFile("stations.csv");
+		CSVReader reader = readFile(STATIONS_CSV);
 		
 		List<String[]> lines = loadLines(reader);
 		
-		return populateStations(lines);
+		return populate(lines);
 	}
 
-	protected List<Station> populateStations(List<String[]> lines) {
+	@Override
+	protected List<Station> populate(List<String[]> lines) {
 		ArrayList<Station> stations = new ArrayList<Station>(lines.size());
 		Station station;
 		for(String[] line : lines) {
@@ -42,19 +45,6 @@ public class StationCsvLoader implements StationLoader {
 			stations.add(station);
 		}
 		return stations;
-	}
-
-	protected List<String[]> loadLines(CSVReader reader) {
-		try {
-			return reader.readAll();
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	protected CSVReader readFile(String fileName) {
-		InputStreamReader reader = new InputStreamReader(this.getClass().getResourceAsStream("/data/" + fileName));
-		return new CSVReader(reader, ',', '"', 1);
 	}
 
 }
