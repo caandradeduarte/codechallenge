@@ -16,7 +16,7 @@ import com.caioduarte.brasilct.codechallenge.dao.StationDao;
 import com.caioduarte.brasilct.codechallenge.models.Station;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:applicationContext.xml")
+@ContextConfiguration("classpath:daoContextTest.xml")
 public class StationsDaoHsqlTest {
 
 	@Autowired
