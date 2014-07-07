@@ -35,6 +35,7 @@ public class Station {
 	/**
 	 * Created only because of hibernate
 	 */
+	@SuppressWarnings("unused")
 	private Station() {
 	}
 
@@ -48,6 +49,15 @@ public class Station {
 		this.zone = zone;
 		this.totalLines = totalLines;
 		this.rail = rail;
+	}
+
+	/**
+	 * Allowed only from other models 
+	 * 
+	 * @param id
+	 */
+	Station(Integer id) {
+		this.id = id;
 	}
 
 	public Integer getId() {
