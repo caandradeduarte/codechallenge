@@ -31,6 +31,12 @@ public class Station {
 	private Integer totalLines;
 
 	private Integer rail;
+	
+	/**
+	 * Created only because of hibernate
+	 */
+	private Station() {
+	}
 
 	private Station(Integer id, BigDecimal latitude, BigDecimal longitude, String name,
 			String displayName, BigDecimal zone, Integer totalLines, Integer rail) {
