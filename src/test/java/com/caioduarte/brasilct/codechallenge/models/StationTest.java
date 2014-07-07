@@ -1,9 +1,10 @@
 package com.caioduarte.brasilct.codechallenge.models;
 
-import static org.junit.Assert.*;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
-import com.caioduarte.brasilct.codechallenge.models.Station;
+import java.math.BigDecimal;
+
+import org.junit.Test;
 
 public class StationTest {
 
@@ -11,8 +12,8 @@ public class StationTest {
 	public void must_create_an_station_by_its_builder() {
 		int id = 1;
 		String name = "name";
-		String latitude = "latitude", longitude = "longitude";
-		int zone = 2;
+		BigDecimal latitude = new BigDecimal("55.14"), longitude = new BigDecimal("-0.4232");
+		BigDecimal zone = new BigDecimal("2.5");
 		int totalLines = 3;
 		int rail = 4;
 		String displayName = "displayName";
@@ -25,7 +26,7 @@ public class StationTest {
 		assertEquals(name, station.getName());
 		assertEquals(latitude, station.getLatitude());
 		assertEquals(longitude, station.getLongitude());
-		assertEquals(Integer.valueOf(zone), station.getZone());
+		assertEquals(zone, station.getZone());
 		assertEquals(Integer.valueOf(totalLines), station.getTotalLines());
 		assertEquals(Integer.valueOf(rail), station.getRail());
 		assertEquals(displayName, station.getDisplayName());

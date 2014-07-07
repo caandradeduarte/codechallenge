@@ -1,5 +1,7 @@
 package com.caioduarte.brasilct.codechallenge.models;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -16,22 +18,22 @@ public class Station {
 	@Id
 	private Integer id;
 
-	private String latitude;
+	private BigDecimal latitude;
 
-	private String longitude;
+	private BigDecimal longitude;
 
 	private String name;
 
 	private String displayName;
 
-	private Integer zone;
+	private BigDecimal zone;
 
 	private Integer totalLines;
 
 	private Integer rail;
 
-	private Station(Integer id, String latitude, String longitude, String name,
-			String displayName, Integer zone, Integer totalLines, Integer rail) {
+	private Station(Integer id, BigDecimal latitude, BigDecimal longitude, String name,
+			String displayName, BigDecimal zone, Integer totalLines, Integer rail) {
 		this.id = id;
 		this.latitude = latitude;
 		this.longitude = longitude;
@@ -46,11 +48,11 @@ public class Station {
 		return id;
 	}
 
-	public String getLatitude() {
+	public BigDecimal getLatitude() {
 		return latitude;
 	}
 
-	public String getLongitude() {
+	public BigDecimal getLongitude() {
 		return longitude;
 	}
 
@@ -62,7 +64,7 @@ public class Station {
 		return displayName;
 	}
 
-	public Integer getZone() {
+	public BigDecimal getZone() {
 		return zone;
 	}
 
@@ -101,7 +103,7 @@ public class Station {
 				this.name = name;
 			}
 
-			public MustHaveZone coordinates(String latitude, String longitude) {
+			public MustHaveZone coordinates(BigDecimal latitude, BigDecimal longitude) {
 				return new MustHaveZone(id, name, latitude, longitude);
 			}
 		}
@@ -109,18 +111,18 @@ public class Station {
 		public static class MustHaveZone {
 			private final Integer id;
 			private final String name;
-			private final String latitude;
-			private final String longitude;
+			private final BigDecimal latitude;
+			private final BigDecimal longitude;
 
-			public MustHaveZone(Integer id, String name, String latitude,
-					String longitude) {
+			public MustHaveZone(Integer id, String name, BigDecimal latitude,
+					BigDecimal longitude) {
 				this.id = id;
 				this.name = name;
 				this.latitude = latitude;
 				this.longitude = longitude;
 			}
 
-			public MustHaveTotalLines zone(Integer zone) {
+			public MustHaveTotalLines zone(BigDecimal zone) {
 				return new MustHaveTotalLines(id, name, latitude, longitude,
 						zone);
 			}
@@ -129,12 +131,12 @@ public class Station {
 		public static class MustHaveTotalLines {
 			private final Integer id;
 			private final String name;
-			private final String latitude;
-			private final String longitude;
-			private final Integer zone;
+			private final BigDecimal latitude;
+			private final BigDecimal longitude;
+			private final BigDecimal zone;
 
-			public MustHaveTotalLines(Integer id, String name, String latitude,
-					String longitude, Integer zone) {
+			public MustHaveTotalLines(Integer id, String name, BigDecimal latitude,
+					BigDecimal longitude, BigDecimal zone) {
 				this.id = id;
 				this.name = name;
 				this.latitude = latitude;
@@ -151,13 +153,13 @@ public class Station {
 		public static class MustHaveRail {
 			private final Integer id;
 			private final String name;
-			private final String latitude;
-			private final String longitude;
-			private final Integer zone;
+			private final BigDecimal latitude;
+			private final BigDecimal longitude;
+			private final BigDecimal zone;
 			private final Integer totalLines;
 
-			public MustHaveRail(Integer id, String name, String latitude,
-					String longitude, Integer zone, Integer totalLines) {
+			public MustHaveRail(Integer id, String name, BigDecimal latitude,
+					BigDecimal longitude, BigDecimal zone, Integer totalLines) {
 				this.id = id;
 				this.name = name;
 				this.latitude = latitude;
@@ -172,18 +174,18 @@ public class Station {
 			}
 		}
 
-		static class StationBuilder {
+		public static class StationBuilder {
 			private Integer id;
-			private String latitude;
-			private String longitude;
+			private BigDecimal latitude;
+			private BigDecimal longitude;
 			private String name;
-			private Integer zone;
+			private BigDecimal zone;
 			private Integer totalLines;
 			private Integer rail;
 			private String displayName;
 
-			public StationBuilder(Integer id, String name, String latitude,
-					String longitude, Integer zone, Integer totalLines,
+			public StationBuilder(Integer id, String name, BigDecimal latitude,
+					BigDecimal longitude, BigDecimal zone, Integer totalLines,
 					Integer rail) {
 				this.id = id;
 				this.name = name;
