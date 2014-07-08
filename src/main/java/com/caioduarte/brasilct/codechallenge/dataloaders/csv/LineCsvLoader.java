@@ -3,11 +3,14 @@ package com.caioduarte.brasilct.codechallenge.dataloaders.csv;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import au.com.bytecode.opencsv.CSVReader;
 
 import com.caioduarte.brasilct.codechallenge.dataloaders.LineLoader;
 import com.caioduarte.brasilct.codechallenge.models.Line;
 
+@Repository
 public class LineCsvLoader extends CsvLoader<Line> implements
 		LineLoader {
 
