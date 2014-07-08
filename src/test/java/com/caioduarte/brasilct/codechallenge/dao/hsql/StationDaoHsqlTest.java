@@ -1,6 +1,7 @@
 package com.caioduarte.brasilct.codechallenge.dao.hsql;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -39,6 +40,13 @@ public class StationDaoHsqlTest {
 		dao.saveAll(stations);
 		
 		assertEquals(2, dao.list().size());
+	}
+	
+	@Test
+	public void must_find_an_item_added() {
+		dao.saveAll(Arrays.asList(generateStation(3)));
+		
+		assertNotNull(dao.find(3));
 	}
 
 }

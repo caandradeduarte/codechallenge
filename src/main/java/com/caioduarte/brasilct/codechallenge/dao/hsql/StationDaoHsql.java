@@ -32,4 +32,9 @@ public class StationDaoHsql implements StationDao {
 		return query.getResultList();
 	}
 
+	@Override
+	public Station find(Integer id) {
+		return em.find(Station.class, id);
+	}
+
 }

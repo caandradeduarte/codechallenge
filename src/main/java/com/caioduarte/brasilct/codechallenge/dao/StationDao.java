@@ -10,4 +10,6 @@ public interface StationDao {
 
 	List<Station> list();
 	
+	Station find(Integer id);
+	
 }
