@@ -17,7 +17,7 @@ import com.caioduarte.brasilct.codechallenge.resources.converters.Path2PathDtoCo
 import com.caioduarte.brasilct.codechallenge.services.PathFinder;
 
 @Component
-@javax.ws.rs.Path("/path-finder")
+@javax.ws.rs.Path("/path")
 @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 public class PathFinderResource {
 
