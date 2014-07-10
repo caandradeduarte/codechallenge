@@ -6,6 +6,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.spring.scope.RequestContextFilter;
 
 import com.caioduarte.brasilct.codechallenge.resources.PathFinderResource;
+import com.caioduarte.brasilct.codechallenge.resources.dto.PathDTO;
 
 /**
  * Registers the components to be used by the JAX-RS application
@@ -16,6 +17,9 @@ import com.caioduarte.brasilct.codechallenge.resources.PathFinderResource;
 public class JaxRsAppConfig extends ResourceConfig {
 	
 	public JaxRsAppConfig() {
+		// Jaxb Elements
+		register(PathDTO.class);
+		
 		//Resources
 		register(PathFinderResource.class);
 		
