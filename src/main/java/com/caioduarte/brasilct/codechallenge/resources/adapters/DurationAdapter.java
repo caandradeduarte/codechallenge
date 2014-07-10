@@ -6,10 +6,10 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 import org.springframework.util.StringUtils;
 
-public class DurationAdapter extends XmlAdapter<Duration, String> {
+public class DurationAdapter extends XmlAdapter<String, Duration> {
 
 	@Override
-	public String unmarshal(Duration v) throws Exception {
+	public String marshal(Duration v) throws Exception {
 		if(v == null) return null;
 		Integer hour = (int) v.getSeconds() / 3600;
 		Integer mins = (int) (v.getSeconds()%3600) / 60;
@@ -17,7 +17,7 @@ public class DurationAdapter extends XmlAdapter<Duration, String> {
 	}
 
 	@Override
-	public Duration marshal(String v) throws Exception {
+	public Duration unmarshal(String v) throws Exception {
 		if (!StringUtils.isEmpty(v) || v.matches("([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]")) {
 			int hour = Integer.valueOf(v.split(":")[0]);
 			int mins = Integer.valueOf(v.split(":")[1]);
