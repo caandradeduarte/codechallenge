@@ -1,3 +1,17 @@
+London Metro Path Finder
+==============
+
+Clone esse repositório. Com o maven previamente instalado, rode o comando:
+
+	mvn tomcat:run
+
+e acesse a app no endereço:
+
+	http://localhost:8080/codechallenge
+	
+e siga as instruções :)
+
+==============
 code challenge
 ==============
 

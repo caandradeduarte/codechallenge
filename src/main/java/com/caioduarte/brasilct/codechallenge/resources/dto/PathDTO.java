@@ -1,6 +1,7 @@
 package com.caioduarte.brasilct.codechallenge.resources.dto;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -15,40 +16,15 @@ import com.caioduarte.brasilct.codechallenge.resources.adapters.DurationAdapter;
 @XmlAccessorType(XmlAccessType.PROPERTY)
 public class PathDTO {
 
-	public static class StationDTO {
-
-		private String name;
-		private Integer line;
-
-		@XmlElement(name = "name")
-		public String getName() {
-			return name;
-		}
-
-		public void setName(String name) {
-			this.name = name;
-		}
-
-		@XmlElement(name = "line")
-		public Integer getLine() {
-			return line;
-		}
-
-		public void setLine(Integer line) {
-			this.line = line;
-		}
-
-	}
-
-	private List<StationDTO> stations;
+	private List<String> stations = new ArrayList<String>();
 	private Duration travelTime;
 
 	@XmlElement(name = "stations")
-	public List<StationDTO> getStations() {
+	public List<String> getStations() {
 		return stations;
 	}
 
-	public void setStations(List<StationDTO> stations) {
+	public void setStations(List<String> stations) {
 		this.stations = stations;
 	}
 

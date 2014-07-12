@@ -28,7 +28,7 @@ public class PathFinderResource {
 	private PathFinder pathFinder;
 
 	@GET
-	@javax.ws.rs.Path("/source/{source-id}/target/{target-id}")
+	@javax.ws.rs.Path("/{source-id}/{target-id}")
 	public Response anyPath(@PathParam("source-id") final Integer sourceId,
 			@PathParam("target-id") final Integer targetId) {
 
@@ -41,11 +41,11 @@ public class PathFinderResource {
 
 		Path path = pathFinder.anyPath(source, target);
 
-		return Response.ok(new Path2PathDtoConverter().convert(path)).build();
+		return Response.ok(new Path2PathDtoConverter(path).convert()).build();
 	}
 
 	@GET
-	@javax.ws.rs.Path("/shortest/source/{source-id}/target/{target-id}")
+	@javax.ws.rs.Path("/{source-id}/{target-id}/shortest")
 	public Response shortestPath(
 			@PathParam("source-id") final Integer sourceId,
 			@PathParam("target-id") final Integer targetId) {
@@ -59,7 +59,7 @@ public class PathFinderResource {
 
 		Path path = pathFinder.shortestPath(source, target);
 
-		return Response.ok(new Path2PathDtoConverter().convert(path)).build();
+		return Response.ok(new Path2PathDtoConverter(path).convert()).build();
 	}
 
 }

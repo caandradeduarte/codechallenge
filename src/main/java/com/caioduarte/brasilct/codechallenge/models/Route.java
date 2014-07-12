@@ -1,7 +1,11 @@
 package com.caioduarte.brasilct.codechallenge.models;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 @Entity
 public class Route {
@@ -14,6 +18,9 @@ public class Route {
 	private String color;
 	
 	private String stripe;
+	
+	@Transient
+	private HashSet<Station> stations = new HashSet<Station>();
 	
 	/**
 	 * Created only because of hibernate
@@ -66,6 +73,10 @@ public class Route {
 
 	public String getStripe() {
 		return stripe;
+	}
+	
+	public Set<Station> getStations() {
+		return stations;
 	}
 	
 }

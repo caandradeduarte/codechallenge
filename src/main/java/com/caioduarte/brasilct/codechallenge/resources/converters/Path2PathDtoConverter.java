@@ -1,31 +1,25 @@
 package com.caioduarte.brasilct.codechallenge.resources.converters;
 
-import java.util.ArrayList;
-
-import com.caioduarte.brasilct.codechallenge.models.Line;
 import com.caioduarte.brasilct.codechallenge.models.Path;
+import com.caioduarte.brasilct.codechallenge.models.Station;
 import com.caioduarte.brasilct.codechallenge.resources.dto.PathDTO;
-import com.caioduarte.brasilct.codechallenge.resources.dto.PathDTO.StationDTO;
 
 public class Path2PathDtoConverter {
 	
-	public PathDTO convert(Path path) {
-		PathDTO dto = new PathDTO();
-		dto.setTravelTime(path.travelTime());
-		
-		dto.setStations(new ArrayList<StationDTO>(path.legs().size()));
-		
-		path.legs().forEach(leg -> {
-			dto.getStations().add(convertLeg2StationDto(leg));
-		});
-		
-		return dto;
+	private static Path PATH;
+	
+	public Path2PathDtoConverter(Path path) {
+		PATH = path;
 	}
 	
-	private StationDTO convertLeg2StationDto(Line leg) {
-		StationDTO dto = new StationDTO();
-		dto.setName(leg.getTarget().getName());
-		dto.setLine(leg.getRoute().getLine());
+	public PathDTO convert() {
+		PathDTO dto = new PathDTO();
+		dto.setTravelTime(PATH.travelTime());
+		
+		for(Station s : PATH.stations()) {
+			dto.getStations().add(s.getName());
+		}
+		
 		return dto;
 	}
 

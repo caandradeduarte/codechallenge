@@ -1,9 +1,14 @@
 package com.caioduarte.brasilct.codechallenge.models;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 /**
  * Once created, a station must not be changed, so if you need to create one,
@@ -31,6 +36,12 @@ public class Station {
 	private Integer totalLines;
 
 	private Integer rail;
+	
+	@Transient
+	private Set<Route> lines = new HashSet<Route>();
+	
+	@Transient
+	private List<Station> nextStations = new ArrayList<Station>();
 	
 	/**
 	 * Created only because of hibernate
@@ -90,6 +101,14 @@ public class Station {
 
 	public Integer getRail() {
 		return rail;
+	}
+	
+	public Set<Route> getLines() {
+		return lines;
+	}
+	
+	public List<Station> getNextStations() {
+		return nextStations;
 	}
 
 	public static class Builder {
